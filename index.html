@@ -1,0 +1,27 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <title>Testing</title>
+  <meta charset="utf-8">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
+  <script src="jquery.urlmod.v1.0.js" ></script>
+  <script>
+  		$(document).ready(function() {
+  		  var retVal = $.urlmod({
+    				url: "?param1=true&hi=now&priorities=1,2",
+    				updates : {
+    					param1: "false",
+    					priorities: [1,2,3,4]
+    				},
+            removeStaleParams: true
+    			});
+        console.log("?param1=true&hi=now&priorities=1,2");
+        console.log(retVal);
+    	});
+  </script>
+</head>
+
+<body>
+</body>
+</html>
