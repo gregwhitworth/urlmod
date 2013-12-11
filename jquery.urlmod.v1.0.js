@@ -1,6 +1,7 @@
-// @preserve Author: Greg Whitworth
-// @preserve Version: 1.0
-// @license MIT License
+/** @preserve Author: Greg Whitworth */
+/** @preserve URL: https://github.com/gregwhitworth/urlmod */
+/** @preserve Version: 1.0 */
+/** @license MIT License */
 
 (function ( $ ) { 
 
