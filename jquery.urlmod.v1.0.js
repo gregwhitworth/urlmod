@@ -7,7 +7,7 @@
 
 			var url = settings.url;
 			var updates = settings.updates;
-			
+
 			var urlStart = url.substring(0, url.indexOf('?') + 1); // This will get everything through the ?
 			var paramString = url.substring(url.indexOf('?') + 1); // This will get everything after the ?
 			var paramsArr = [];									   // Used to store the params we want to work with
@@ -27,25 +27,28 @@
 			// to reference later
 			var keys = Object.keys(paramsArr);
 
+			// Remove any items that do not have updates
+			// if the user wants them removed
+			if(settings.removeStaleParams) {
+				$.each(keys, function(i, key) {
+					if(eval('updates.' + key) == undefined) {
+						delete paramsArr[key];
+					}
+				});
+			}
+
 			// Update the values of the array with
 			// our updates
-			$.each(keys, function(i, key) {
-				if(eval('updates.' + key) != undefined) {
-					var updateVal = eval('updates.' + key);
-
-					if($.isArray(updateVal)) {
-						updateVal = updateVal.join(',');
+			$.each(updates, function(key, update) {
+					if($.isArray(update)) {
+						update = update.join(',');
 					}
 
-					paramsArr[key] = updateVal;
-				}
-				else if(settings.removeStaleParams) {
-					delete paramsArr[key];					
-				}
+					paramsArr[key] = update;
 			});
 
 			// We need to get the keys of the array
-			// again since we may have removed some
+			// again since we may have removed/added items
 			keys = Object.keys(paramsArr);
 
 			// Loop through the keys and create
