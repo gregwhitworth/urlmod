@@ -1,3 +1,7 @@
+// @preserve Author: Greg Whitworth
+// @preserve Version: 1.0
+// @license MIT License
+
 (function ( $ ) { 
 
     $.urlmod = function(options) {
